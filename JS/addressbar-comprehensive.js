@@ -287,7 +287,10 @@
 
     // Handles the repetitive background aspect of each change
     // Calls the necessary action for each change and calls the callback after
-    function executeMoveAction(change, isMailBar = false) {
+    function executeMoveAction(change) {
+      let isMailBar = document.querySelector(".toolbar-mainbar.toolbar-mailbar");
+      isMailBar = isMailBar ? true : false;
+
       // keep track of how many times the change is attempted
       let tries = 0;
       let maxLimit = 3;
@@ -321,7 +324,7 @@
           // Run all changes that are in both the url bar and the mail bar
           for (const change in ALL_CHANGES) {
             if (ALL_CHANGES[change].isAddressBarOnly) continue;
-            executeMoveAction(ALL_CHANGES[change], isMailBarActive);
+            executeMoveAction(ALL_CHANGES[change]);
           }
 
           // if it is different from the previous state, we need to act on it
