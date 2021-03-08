@@ -198,7 +198,7 @@
 /* =====================================
    Panel Toggle
   ===================================== */
-.button-toolbar.panel-clickoutside-ignore {
+#panelToggle {
   /* position: absolute; */
   /* top: 0; */
   /* right: 132px; */
@@ -207,12 +207,12 @@
   transform: none !important;
   z-index: 88;
 }
-#main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > div.button-toolbar.panel-clickoutside-ignore.paneltoggle > button:hover,
-#main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > div.button-toolbar.panel-clickoutside-ignore.paneltoggle > button.active:hover {
+#main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > #panelToggle > button:hover,
+#main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > #panelToggle > button.active:hover {
   background-color: var(--colorAccentBgFadedMore) !important;
   fill: var(--colorAccentFg);
 }
-.button-toolbar.panel-clickoutside-ignore.active {
+#panelToggle.active {
   background-color: var(--colorBgDark) !important;
   fill: var(--colorHighlightBg);
   opacity: 1 !important;
