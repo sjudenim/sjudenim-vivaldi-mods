@@ -251,6 +251,12 @@
               panelToggle.classList.remove("active");
             }
           });
+
+          // Set initial styling
+          if (panel.classList.contains("icons") && !panel.classList.contains("active")) {
+            panelToggle.classList.add("active");
+          }
+
           return true;
         },
       },
