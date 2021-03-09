@@ -241,14 +241,14 @@
               panel.classList.add("icons");
               panel.style = "width: 34px;";
 
-              panelToggle.classList.remove("active");
+              panelToggle.classList.add("active");
             } else {
               // hide the panel
               panel.classList.add("switcher");
               panel.classList.remove("icons");
               panel.style = "width: 0;";
 
-              panelToggle.classList.add("active");
+              panelToggle.classList.remove("active");
             }
           });
           return true;

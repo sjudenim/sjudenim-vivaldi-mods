@@ -208,12 +208,14 @@
   z-index: 88;
 }
 #main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > #panelToggle > button:hover,
-#main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > #panelToggle > button.active:hover {
+#main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > #panelToggle.active > button:hover {
   background-color: var(--colorAccentBgFadedMore) !important;
   fill: var(--colorAccentFg);
 }
 #panelToggle.active {
   background-color: var(--colorBgDark) !important;
+}
+#panelToggle.active button {
   fill: var(--colorHighlightBg);
   opacity: 1 !important;
 }
