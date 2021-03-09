@@ -204,13 +204,41 @@
         id: "PanelToggle",
         isAddressBarOnly: false,
         isAffectedByFullscreen: false,
+        startupState: null,
         moveAction(saved, isMailBar) {
+          function togglePanel(specificState = null) {
+            let action;
+            if (specificState === null || specificState.target) {
+              action = document.getElementById("panels-container").classList.contains("switcher");
+            } else {
+              action = specificState === "active" ? true : false;
+            }
+            if (action) {
+              // show the panel
+              panel.classList.remove("switcher");
+              panel.classList.add("icons");
+              panel.style = "width: 34px;";
+
+              panelToggle.classList.add("active");
+              chrome.storage.local.set({ panelActive: "active" });
+            } else {
+              // hide the panel
+              panel.classList.add("switcher");
+              panel.classList.remove("icons");
+              panel.style = "width: 0;";
+
+              panelToggle.classList.remove("active");
+              chrome.storage.local.set({ panelActive: "hidden" });
+            }
+          }
+
           let panel = document.getElementById("panels-container");
           let toolBar = document.querySelector(".toolbar-mainbar.UrlBar") || document.querySelector(".toolbar-mainbar.toolbar-mailbar .toolbar-mainbar");
+          let initialState = ALL_CHANGES["PanelToggle"].startupState;
 
           // make sure everything is defined and the button isn't already added
           let buttonAlreadyExists = document.getElementById("panelToggle");
-          if (!(panel && toolBar) && buttonAlreadyExists) return false;
+          if (!(panel && toolBar) || buttonAlreadyExists || initialState === null) return false;
 
           // create and add the button
           let panelToggle = document.createElement("div");
@@ -234,30 +262,24 @@
           }
 
           // set up the button click actions
-          panelToggle.addEventListener("click", function () {
-            if (panel.classList.contains("switcher")) {
-              // show the panel
-              panel.classList.remove("switcher");
-              panel.classList.add("icons");
-              panel.style = "width: 34px;";
-
-              panelToggle.classList.add("active");
-            } else {
-              // hide the panel
-              panel.classList.add("switcher");
-              panel.classList.remove("icons");
-              panel.style = "width: 0;";
-
-              panelToggle.classList.remove("active");
-            }
-          });
+          panelToggle.addEventListener("click", togglePanel);
 
           // Set initial styling
-          if (panel.classList.contains("icons") && !panel.classList.contains("active")) {
-            panelToggle.classList.add("active");
+          if (initialState !== "used") {
+            togglePanel(initialState);
+            ALL_CHANGES["PanelToggle"].startupState = "used";
           }
 
           return true;
+        },
+        onStartUp() {
+          // get the old state of the panel from storage
+          vivaldi.prefs.get("vivaldi.panels.state", function (state) {
+            let defaultState = state.barVisible ? "active" : "hidden";
+            chrome.storage.local.get({ panelActive: defaultState }, function (result) {
+              ALL_CHANGES["PanelToggle"].startupState = result.panelActive;
+            });
+          });
         },
       },
       // ============================================================================================================================================
