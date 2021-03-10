@@ -198,27 +198,33 @@
 /* =====================================
    Panel Toggle
   ===================================== */
-#panelToggle {
-  /* position: absolute; */
-  /* top: 0; */
-  /* right: 132px; */
+.UrlBar > .toolbar-droptarget .panel-clickoutside-ignore {
   margin-left: auto;
   width: 40px;
   transform: none !important;
   z-index: 88;
 }
-#main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > #panelToggle > button:hover,
-#main > div.toolbar.toolbar-addressbar.toolbar-mainbar.toolbar-large > #panelToggle.active > button:hover {
+
+.UrlBar > .toolbar-droptarget .panel-clickoutside-ignore button:hover,
+.UrlBar > .toolbar-droptarget .panel-clickoutside-ignore button[title*="Hide Panel"]:hover {
   background-color: var(--colorAccentBgFadedMore) !important;
   fill: var(--colorAccentFg);
 }
-#panelToggle.active {
+
+.UrlBar > .toolbar-droptarget .panel-clickoutside-ignore button[title*="Hide Panel"] {
   background-color: var(--colorBgDark) !important;
-}
-#panelToggle.active button {
   fill: var(--colorHighlightBg);
   opacity: 1 !important;
 }
+
 #panels-container.overlay .panel-group {
   backdrop-filter: blur(5px);
+}
+
+.UrlBar > .toolbar-droptarget .panel-clickoutside-ignore svg path {
+  d: path("M19 10.513L18.438 10 13 14.973 7.563 10 7 10.513 13 16z");
+}
+
+.UrlBar > .toolbar-droptarget {
+  order: 1;
 }
