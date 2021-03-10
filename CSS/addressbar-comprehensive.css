@@ -99,6 +99,10 @@
   padding-right: 132px;
 }
 
+.toolbar-mainbar > *:last-child:not(.button-toolbar) {
+  margin-right: unset;
+}
+
 /* =====================================
    Status Bar
   ===================================== */
