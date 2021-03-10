@@ -123,7 +123,7 @@
 }
 #statusContainer {
   position: absolute;
-  grid-area: 5/6;
+  grid-area: 4/5;
   z-index: 1000;
   left: -3px;
   /* top: 0; */
