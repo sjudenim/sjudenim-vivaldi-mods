@@ -106,12 +106,12 @@
 }
 
 /* Callout arrows */
-.extension-popup:before,
+/* .extension-popup:before,
 .extension-popup.top:after {
   right: 9px !important;
   border: 8px solid transparent !important;
   top: -17px !important;
-}
+} */
 
 .extension-popup.top:after {
   border-bottom-color: var(--colorBorder) !important;

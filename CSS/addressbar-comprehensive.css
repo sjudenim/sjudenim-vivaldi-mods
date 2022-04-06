@@ -29,7 +29,7 @@
 /* Callout arrows */
 .extension-popup:before,
 .extension-popup.top:after {
-  right: 9px !important;
+  left: calc(var(--anchorPosition) + 2px);
   border: 8px solid transparent !important;
   top: -17px !important;
 }
