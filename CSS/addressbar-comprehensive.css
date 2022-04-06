@@ -36,6 +36,9 @@
 
 .extension-popup.top:after { border-bottom-color: var(--colorBorder) !important; }
 
+/* Remove border below extensions toolbar */
+.address-top .toolbar-mainbar .toolbar-extensions::after { content: unset; }
+
 /* =====================================
    Reload Button 
   ===================================== */
