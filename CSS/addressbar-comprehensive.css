@@ -3,7 +3,7 @@
   ===================================== */
 .UrlBar {
   display: grid;
-  grid-template-columns: 172px 1fr auto 34px 1fr 134px;
+  grid-template-columns: 210px 1fr auto 34px 1fr 34px 134px;
 }
 
 .UrlBar > .toolbar-droptarget { order: 1; }
